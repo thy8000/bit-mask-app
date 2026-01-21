@@ -20,3 +20,7 @@ p {
 ul {
   @apply font-secondary list-disc px-4;
 }
+
+a {
+  @apply font-secondary font-bold text-lg text-neutral-950 hover:text-neutral-950/70 transition-all duration-500;
+}

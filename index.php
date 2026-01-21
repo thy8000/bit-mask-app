@@ -65,7 +65,7 @@ $cities_map = [
             </div>
         </section>
 
-        <section class="grid grid-cols-2 gap-4">
+        <section class="grid lg:grid-cols-2 grid-cols-1 gap-4">
             <div class="flex flex-col gap-8 bg-white p-4 rounded">
                 <h2>Cidades e Fuso horários</h2>
 
@@ -101,7 +101,17 @@ $cities_map = [
         </section>
     </main>
 
-    <script src="./src/script.js"></script>
+    <footer class="bg-white flex justify-evenly items-center mt-8 p-4">
+        <a href="https://thunaymoreiradesoares.com/">Thunay Moreira de Soares</a>
+
+        <div class="flex gap-4">
+            <a class="!text-sm" href="https://github.com/thy8000">Github</a>
+
+            <a class="!text-sm" href="https://github.com/thy8000">Linkedin</a>
+        </div>
+    </footer>
+
+    <script src=" ./src/script.js"></script>
 </body>
 
 </html>
