@@ -1,3 +1,26 @@
+<?php
+
+$cities_map = [
+    'Moscow' => '3',
+    'Paris'  => '2',
+    'Berlin' => '2',
+    'Brussels' => '2',
+    'Amsterdam' => '2',
+    'Rome' => '2',
+    'London' => '1',
+    'Dublin' => '1',
+    'New York' => '-4',
+    'Washington, DC' => '-4',
+    'St. Louis' => '-5',
+    'Los Angeles' => '-7',
+    'Tokyo' => '9',
+    'Beijing' => '8',
+    'Ho Chi Mihn City' => '7',
+    'Mumbai' => '5',
+];
+
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -46,90 +69,35 @@
             <div class="flex flex-col gap-8 bg-white p-4 rounded">
                 <h2>Cidades e Fuso horários</h2>
 
-                <div class="flex flex-col gap-2 font-secondary">
-                    <label class="flex gap-4 items-center">
-                        <input type="checkbox" id="Moscow" name="moscow" />
-                        Moscow: GMT +3
-                    </label>
+                <ul class="flex flex-col gap-2 font-secondary">
+                    <?php
 
-                    <label class="flex gap-4 items-center">
-                        <input type="checkbox" id="Moscow" name="moscow" />
-                        Paris: GMT +2
-                    </label>
+                    foreach ($cities_map as $city => $value) {
 
-                    <label class="flex gap-4 items-center">
-                        <input type="checkbox" id="Moscow" name="moscow" />
-                        Berlin: GMT +2
-                    </label>
+                    ?>
+                        <li><?php printf("%s: GMT %s", $city, $value); ?></li>
+                    <?php
 
-                    <label class="flex gap-4 items-center">
-                        <input type="checkbox" id="Moscow" name="moscow" />
-                        Brussels: GMT +2
-                    </label>
+                    }
 
-                    <label class="flex gap-4 items-center">
-                        <input type="checkbox" id="Moscow" name="moscow" />
-                        Amsterdam: GMT +2
-                    </label>
-
-                    <label class="flex gap-4 items-center">
-                        <input type="checkbox" id="Moscow" name="moscow" />
-                        Rome: GMT +2
-                    </label>
-
-                    <label class="flex gap-4 items-center">
-                        <input type="checkbox" id="Moscow" name="moscow" />
-                        London: GMT +1
-                    </label>
-
-                    <label class="flex gap-4 items-center">
-                        <input type="checkbox" id="Moscow" name="moscow" />
-                        Dublin: GMT +1
-                    </label>
-
-                    <label class="flex gap-4 items-center">
-                        <input type="checkbox" id="Moscow" name="moscow" />
-                        New York: GMT -4
-                    </label>
-
-                    <label class="flex gap-4 items-center">
-                        <input type="checkbox" id="Moscow" name="moscow" />
-                        Washington, DC: GMT -4
-                    </label>
-
-                    <label class="flex gap-4 items-center">
-                        <input type="checkbox" id="Moscow" name="moscow" />
-                        St. Louis: GMT -5
-                    </label>
-
-                    <label class="flex gap-4 items-center">
-                        <input type="checkbox" id="Moscow" name="moscow" />
-                        Los Angeles: GMT -7
-                    </label>
-
-                    <label class="flex gap-4 items-center">
-                        <input type="checkbox" id="Moscow" name="moscow" />
-                        Tokyo: GMT +9
-                    </label>
-
-                    <label class="flex gap-4 items-center">
-                        <input type="checkbox" id="Moscow" name="moscow" />
-                        Beijing: GMT +8
-                    </label>
-
-                    <label class="flex gap-4 items-center">
-                        <input type="checkbox" id="Moscow" name="moscow" />
-                        Ho Chi Mihn City: GMT +7
-                    </label>
-
-                    <label class="flex gap-4 items-center">
-                        <input type="checkbox" id="Moscow" name="moscow" />
-                        Mumbai: GMT +5
-                    </label>
-                </div>
+                    ?>
+                </ul>
             </div>
 
-            <div class="flex flex-col gap-8 bg-white p-4 rounded"></div>
+            <div class="flex flex-col gap-8 bg-white p-4 rounded">
+                <form id="cityForm" class="flex flex-col items-start gap-4" method="POST" action="/">
+                    <h2>Filtrar cidades por GMT</h2>
+
+                    <input type="number" id="gmtInput" name="gmtInput" min="-12" max="12" class="border border-blue-500 rounded w-full">
+
+                    <input type="submit" value="Enviar" class="bg-blue-500 text-md text-white py-1 px-4 rounded" />
+
+                    <div class="flex flex-col gap-4">
+                        <h2 class="!hidden block" id="cityFormH2">Cidades encontradas: </h2>
+                        <ul id="list"></ul>
+                    </div>
+                </form>
+            </div>
         </section>
     </main>
 
